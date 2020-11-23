@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "mobileStore"
+  "defaultProject": "mobileStore",
+  "cli": {
+    "analytics": "b09ddea0-8380-46f0-b749-7fa3987e754a"
+  }
 }
