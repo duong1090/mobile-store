@@ -9,7 +9,7 @@ import { AuthenticationService } from '../login/authenticate.service';
 })
 export class HeaderComponent implements OnInit {
   @Input() title = '';
-  @Input() subTitle = '';
+  @Input() subtitle = '';
   @Input() button = '';
 
   constructor(
