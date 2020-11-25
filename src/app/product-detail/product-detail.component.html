@@ -1,1 +1,24 @@
-<p>product-detail works!</p>
+<app-header title="Product"></app-header>
+
+<div class="px-4 row">
+  <div class="col-6">
+    <img class="mt-2" [src]="product.url" />
+  </div>
+  <div class="col-6">
+    <b>{{ product.name }}</b>
+    <p class="mt-2">{{ product.description }}</p>
+    <p class="mt-2"><b>Item code :</b> {{ product.id }}</p>
+    <p class="mt-2"><b>Manufacturer : </b> {{ product.manufacturer }}</p>
+    <p class="mt-2"><b>Category : </b>{{ product.category }}</p>
+    <p class="mt-2"><b>Avaiable Units in Stock : </b>{{ product.category }}</p>
+    <p class="mt-2">{{ product.price }} USD</p>
+    <a href="#" class="btn btn-success">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+      Back
+    </a>
+    <a href="#" class="btn btn-warning ml-3">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>Order now
+    </a>
+  </div>
+</div>
