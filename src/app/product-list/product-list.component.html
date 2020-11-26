@@ -1,1 +1,36 @@
-<p>product-list works!</p>
+<app-header
+  title="Product"
+  subtitle="All available prodcut in our store"
+></app-header>
+
+<div class="container-fluid product-list">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let product of productList" class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <h3>
+              <b>{{ product.name }}</b>
+            </h3>
+            <img
+              class="mt-2"
+              src="data:image/JPEG;base64,{{ product.image }}"
+            />
+            <p class="mt-5">{{ product.description }}</p>
+            <p class="mt-2">{{ product.price }} USD</p>
+            <p class="mt-2">{{ product.amount }} in Stock</p>
+            <a
+              class="btn btn-primary"
+              [routerLink]="['/product/detail/' + product.id]"
+            >
+              <i class="fa fa-bars" aria-hidden="true"></i> Details</a
+            >
+            <a class="btn btn-danger ml-3"
+              ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Order</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,15 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { CartComponent } from './cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HeaderComponent, ProductListComponent, ProductDetailComponent, ProductAddComponent, CartComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HeaderComponent,
+    ProductListComponent,
+    ProductDetailComponent,
+    ProductAddComponent,
+    CartComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
