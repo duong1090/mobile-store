@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/model';
+import { ProductService } from '../product-add/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,70 +8,18 @@ import { Product } from 'src/app/model';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  productList: Product[] = [
-    {
-      id: '1',
-      name: 'IPHONE 11 PRO',
-      description:
-        'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-      url:
-        'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-      amount: '100',
-      price: '10,000',
-    },
-    {
-      id: '2',
-      name: 'IPHONE 11 PRO',
-      description:
-        'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-      url:
-        'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-      amount: '100',
-      price: '10,000',
-    },
+  productList: Product[] = [];
+  constructor(private productService: ProductService) {}
 
-    {
-      id: '3',
-      name: 'IPHONE 11 PRO',
-      description:
-        'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-      url:
-        'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-      amount: '100',
-      price: '10,000',
-    },
-    {
-      id: '3',
-      name: 'IPHONE 11 PRO',
-      description:
-        'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-      url:
-        'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-      amount: '100',
-      price: '10,000',
-    },
-    {
-      id: '3',
-      name: 'IPHONE 11 PRO',
-      description:
-        'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-      url:
-        'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-      amount: '100',
-      price: '10,000',
-    },
-    {
-      id: '3',
-      name: 'IPHONE 11 PRO',
-      description:
-        'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-      url:
-        'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-      amount: '100',
-      price: '10,000',
-    },
-  ];
-  constructor() {}
+  getListProduct = () => {
+    this.productService.getListProduct().subscribe((productList: Product[]) => {
+      console.log('getListProduct', typeof productList[0].image);
+      this.productList = productList;
+    });
+  };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('ngOnInit');
+    this.getListProduct();
+  }
 }

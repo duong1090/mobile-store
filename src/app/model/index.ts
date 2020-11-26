@@ -1,5 +1,5 @@
 export interface Product {
-  id: string;
+  id?: string | 0;
   name?: string;
   price?: string;
   amount?: string;
@@ -8,4 +8,5 @@ export interface Product {
   category?: string;
   status?: 'New' | 'Old' | 'Refurbished';
   url?: string;
+  image?: string;
 }

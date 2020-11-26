@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/model';
+
+import { ProductService } from '../product-add/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,18 +10,19 @@ import { Product } from 'src/app/model';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product = {
-    id: '1',
-    name: 'IPHONE 11 PRO',
-    description:
-      'Điện thoại iPhone X 64GB chính hãng là smartphone giá rẻ, có trả góp. Giao hàng miễn phí trong 1 giờ, 1 đổi 1 tháng đầu nếu lỗi. MUA NGAY!',
-    url:
-      'https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-2-400x460.png',
-    amount: '100',
-    price: '10,000',
-  };
+  product: Product = {};
+  id: number = 0;
+  constructor(route: ActivatedRoute, private productService: ProductService) {
+    route.params.subscribe((params) => {
+      this.id = params['id'];
+    });
+  }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productService.getProduct(this.id).subscribe((product: Product) => {
+      if (product) {
+        this.product = product;
+      }
+    });
+  }
 }
