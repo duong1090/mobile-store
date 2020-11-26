@@ -5,7 +5,7 @@ import { ProductService } from './product.service';
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.scss']
+  styleUrls: ['./product-add.component.scss'],
 })
 export class ProductAddComponent implements OnInit {
   product = {
@@ -16,34 +16,41 @@ export class ProductAddComponent implements OnInit {
     manufacturer: '',
     category: '',
     status: '',
-    image: ''
   };
-  submitted = false;
-  constructor(private productService: ProductService) { }
+  imageFile: any;
+  submitted: boolean = false;
+  constructor(private productService: ProductService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   createProduct(): void {
-    const data = {
-      name: this.product.name,
-      price: this.product.price,
-      amount: this.product.amount,
-      description: this.product.description,
-      manufacturer: this.product.manufacturer,
-      category: this.product.category,
-      status: this.product.status,
-      image: this.product.image
-    };
-    this.productService.create(data)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.submitted = true;
-        },
-        error => {
-          console.log(error);
-        });
+    var product = new FormData();
+    product.append('name', this.product.name);
+    product.append('price', this.product.price);
+    product.append('amount', this.product.amount);
+    product.append('description', this.product.description);
+    product.append('manufacturer', this.product.manufacturer);
+    product.append('category', this.product.category);
+    product.append('status', this.product.status);
+    product.append('image', this.imageFile);
+
+    this.productService.create(product).subscribe(
+      (response) => {
+        console.log(response);
+        this.submitted = true;
+        this.router.navigateByUrl('/cart');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  uploadFile(event: any) {
+    if (event.target) {
+      const file = (event.target as HTMLInputElement).files[0];
+      this.imageFile = file;
+    }
   }
   newProduct(): void {
     this.submitted = false;
@@ -55,9 +62,6 @@ export class ProductAddComponent implements OnInit {
       manufacturer: '',
       category: '',
       status: '',
-      image: ''
     };
   }
-
-
 }

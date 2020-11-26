@@ -9,8 +9,13 @@
       <div *ngFor="let product of productList" class="col-4">
         <div class="card">
           <div class="card-body">
-            <b>{{ product.name }}</b>
-            <img src="data:image/JPEG;base64,{{ product.image }}" />
+            <h3>
+              <b>{{ product.name }}</b>
+            </h3>
+            <img
+              class="mt-2"
+              src="data:image/JPEG;base64,{{ product.image }}"
+            />
             <p class="mt-5">{{ product.description }}</p>
             <p class="mt-2">{{ product.price }} USD</p>
             <p class="mt-2">{{ product.amount }} in Stock</p>

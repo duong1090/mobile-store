@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Config } from '../config/server.config';
 import { Product } from 'src/app/model';
+
 const createUrl = `${Config.API_URL}product/create`;
 
 @Injectable({
