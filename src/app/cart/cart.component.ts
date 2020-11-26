@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  itemsList = [];
+  itemsList: any = [];
+  totalPrice: any = 0;
 
   constructor(private cartService: CartService, private router: Router) {}
 
@@ -16,7 +17,19 @@ export class CartComponent implements OnInit {
     this.cartService.removeCart(item).subscribe((data) => {
       if (data) {
         console.log('removeCartSuccess:::');
-        if (this.itemsList.length) this.itemsList.splice(index, 1);
+        if (this.itemsList.length) {
+          this.itemsList.splice(index, 1);
+          this.updateTotalPrice();
+        }
+      }
+    });
+  };
+
+  onRemoveAll = () => {
+    this.cartService.removeAll().subscribe((data) => {
+      if (data) {
+        this.itemsList = [];
+        this.updateTotalPrice();
       }
     });
   };
@@ -25,8 +38,19 @@ export class CartComponent implements OnInit {
     this.cartService.getCart().subscribe((data) => {
       if (data && data.length) {
         this.itemsList = data;
+        this.updateTotalPrice();
       }
     });
+  };
+
+  updateTotalPrice = () => {
+    this.totalPrice = this.itemsList.reduce((sum: any, item: any) => {
+      return (sum += parseInt(item.totalPrice));
+    }, 0);
+  };
+
+  gotoList = () => {
+    this.router.navigateByUrl('/product/list');
   };
 
   ngOnInit(): void {

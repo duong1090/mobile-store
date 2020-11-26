@@ -38,7 +38,7 @@ export class ProductAddComponent implements OnInit {
       (response) => {
         console.log(response);
         this.submitted = true;
-        this.router.navigateByUrl('/cart');
+        this.router.navigateByUrl('/product/list');
       },
       (error) => {
         console.log(error);

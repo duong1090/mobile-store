@@ -8,7 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
   },
   { path: 'product/list', component: ProductListComponent },

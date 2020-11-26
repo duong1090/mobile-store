@@ -34,7 +34,11 @@ export class AuthenticationService {
         map((user) => {
           console.log('login:::pipe', user);
           if (user != null) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            let is_admin = user.username == 'admin' ? 1 : 0;
+            localStorage.setItem(
+              'currentUser',
+              JSON.stringify({ ...user, is_admin })
+            );
             return user;
           } else {
             return null;

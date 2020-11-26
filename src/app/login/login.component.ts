@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         if (data != null && data.username) {
           console.log('login Success');
           // this.router.navigateByUrl('/productList');
-          this.router.navigateByUrl('/cart');
+          this.router.navigateByUrl('/product/list');
         } else {
           console.log('login fail');
         }

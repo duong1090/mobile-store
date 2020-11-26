@@ -1,6 +1,8 @@
 .product-list {
   img {
-    max-width: 100%;
+    width: 308px;
+    height: 308px;
+    object-fit: cover;
   }
   .product {
     width: 300px;
