@@ -1,1 +1,45 @@
-<p>cart works!</p>
+<app-header
+  title="Cart"
+  subTitle="All the selected product in your cart"
+></app-header>
+
+<div class="mb-3">
+  <div class="action-top">
+    <button class="btn btn-danger">Clear cart</button>
+    <button class="btn btn-warning">Clear cart</button>
+  </div>
+  <div class="">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Unit price</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itemsList; let i = index" [attr.data-index]="i">
+          <th>{{ item.name }}</th>
+          <th>{{ item.quantity }}</th>
+          <th>{{ item.unit }}</th>
+          <th>{{ item.price }}</th>
+          <th><button (click)="onRemove(item, i)">Remove</button></th>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Grand total</th>
+          <th>1234</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="action-bottom">
+    <button class="btn btn-warning">Continue shopping</button>
+  </div>
+</div>
