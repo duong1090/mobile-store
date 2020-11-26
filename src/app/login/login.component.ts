@@ -19,17 +19,13 @@ export class LoginComponent implements OnInit {
   login = () => {
     this.authenticationService.login(this.username, this.password).subscribe(
       (data) => {
-        // if (data != null && data.username) {
-        //   localStorage.setItem('username', data.username);
-        //   localStorage.setItem('password', data.password);
-        //   console.log('login Success');
-        //   // this.router.navigateByUrl('/productList');
-        // } else {
-        //   console.log('login fail');
-        // }
-
-        console.log('login:::', data);
-        this.router.navigateByUrl('/cart');
+        if (data != null && data.username) {
+          console.log('login Success');
+          // this.router.navigateByUrl('/productList');
+          this.router.navigateByUrl('/cart');
+        } else {
+          console.log('login fail');
+        }
       },
       (err) => console.error(err)
     );
