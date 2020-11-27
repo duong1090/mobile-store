@@ -48,8 +48,6 @@ export class AuthenticationService {
   };
 
   public logout = () => {
-    localStorage.removeItem('username');
-    localStorage.removeItem('password');
     localStorage.removeItem('currentUser');
   };
 }
